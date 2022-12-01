@@ -3,8 +3,6 @@ package com.sql.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
 public class Cart {
 	private int cId;
 	private int uId;

@@ -99,7 +99,6 @@ public class DAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
 		return list;
 	}
 	// Get Book By AID
@@ -243,12 +242,12 @@ public class DAO {
 
 	// Hai
 	// GET Book By Id
-	public Book getBookByBId(String cid) {
+	public Book getBookByBId(String bid) {
 		String query = "SELECT * FROM Book WHERE BId = ?";
 		try {
 			conn = new SqlServerConnection().getConnection();// Má»Ÿ káº¿t ná»‘i sql Server
 			ps = conn.prepareStatement(query);
-			ps.setString(1, cid);
+			ps.setString(1, bid);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				return new Book(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(7));
@@ -596,7 +595,7 @@ public class DAO {
 		}
 		// Edit Book Hai
 		public void EditUser(String name, String image, String email, String phone,String imageU, String pass , String username , int uid) {
-			String query = "UPDATE [User] SET UName=?, UPhone=?,UImage=?,Email=?,UPass=?,UTK=?,isShell=0,isUser=1,isAdmin=0 WHERE UID =?";
+				String query = "UPDATE [User] SET UName=?, UPhone=?,UImage=?,Email=?,UPass=?,UTK=?,isBloger=0,isUser=1,isAdmin=0 WHERE UID =?";
 			try {
 				conn = new SqlServerConnection().getConnection();// Má»Ÿ káº¿t ná»‘i sql Server
 				ps = conn.prepareStatement(query);
@@ -716,7 +715,8 @@ public class DAO {
 			return list;
 		}
 		//Insert Order
-		public List<Order> InsertOrder(String name,String country, String address,String zip,String phone,String email,int total, String note) {
+		public List<Order> InsertOrder(String name,String country, String address,String zip,
+									   String phone,String email,int total, String note) {
 			List<Order> list = new ArrayList<Order>();
 			String query = "INSERT INTO  [Order] VALUES(\r\n"
 					+ "16,?,?,?,?,?,?,?,?)"; // User voi ID bang 16 la khach hang ko can dang nhap
@@ -739,9 +739,9 @@ public class DAO {
 			return list;
 		}
 		//Hai
-		public void UpdateUser(User user , String username, String passs, String image, String email)
+		public void UpdateUser(User user , String username, String pass, String image, String email)
 		{
-			String query ="UPDATE [User] SET UName=? , UPhone=? , UImage=? , Email=? ,UPass = ?,  UTK = ?, isShell= 0,isUser=1 ,isAdmin=0 WHERE UID = ?";
+			String query ="UPDATE [User] SET UName=? , UPhone=? , UImage=? , Email=? ,UPass = ?,  UTK = ?, isBloger= 0,isUser=1 ,isAdmin=0 WHERE UID = ?";
 			try {
 				conn = new SqlServerConnection().getConnection();// Má»Ÿ káº¿t ná»‘i sql Server
 				ps = conn.prepareStatement(query);
@@ -749,7 +749,7 @@ public class DAO {
 				ps.setString(2, user.getuPhone());
 				ps.setString(3,image);
 				ps.setString(4, email);
-				ps.setString(5, passs);
+				ps.setString(5, pass);
 				ps.setString(6,username);
 				ps.setInt(7, user.getuID());
 				ps.executeUpdate();
@@ -834,7 +834,7 @@ public class DAO {
 				ps = conn.prepareStatement(query);
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					list.add(new Order(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
+					list.add(new Order(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10)));
 				}
 			} catch (Exception e) {
 				// TODO: handle exception

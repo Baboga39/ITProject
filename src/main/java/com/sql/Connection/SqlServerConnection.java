@@ -20,12 +20,5 @@ public class SqlServerConnection {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		return DriverManager.getConnection(url, userID, password);
 	}
-	public static void main(String[] args) {
-		try {
-			
-			System.out.print(new SqlServerConnection().getConnection());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
+
 }

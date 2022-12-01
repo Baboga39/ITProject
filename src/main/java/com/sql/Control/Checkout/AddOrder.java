@@ -44,7 +44,7 @@ public class AddOrder extends HttpServlet {
 			List<CartItem> items = cart.getItems();
 			StringBuilder content = new StringBuilder();
 			content.append("Dear ").append(name).append("\n");
-			content.append("Bạn vừa đặt hàng từ Shop Family. \n ");
+			content.append("Bạn vừa đặt hàng từ Shop Ngọc Hải. \n ");
 			content.append("Địa chỉ nhận hàng của bạn là: ").append(address).append("\n");
 			content.append("Số điện thoại khi nhận hàng của bạn là ").append(phone).append("\n");
 			content.append("Các sản phẩm bạn đặt bao gồm: \n");
@@ -72,8 +72,7 @@ public class AddOrder extends HttpServlet {
 			}
 			for (CartItem c : items) {
 				dao.InsertCartItem(c.getBook().getBId(), c.getBook().getBPriceSale(), c.getcId(), c.getQuantity());
-				}
-			dao.InsertFeedback(name, email, email, content.toString());
+			}
 			dao.InsertOrder(name, country, address, postcode, phone, email, totalP, note);
 			session.removeAttribute("cart");
 		} catch (Exception e) {

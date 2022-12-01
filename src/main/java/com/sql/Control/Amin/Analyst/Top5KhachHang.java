@@ -19,11 +19,17 @@ import com.sql.Model.Order;
 @WebServlet("/Top5KhachHang")
 public class Top5KhachHang extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		DAO dao = new DAO();
-		List<Order> listPo = dao.top5KhachHang();
-		request.setAttribute("listTop5", listPo);
-		request.getRequestDispatcher("top5khachhang.jsp").forward(request, response);
+		try {
+			response.setContentType("text/html;charset=UTF-8");
+			request.setCharacterEncoding("UTF-8");
+			DAO dao = new DAO();
+			List<Order> listPo = dao.top5KhachHang();
+			request.setAttribute("listTop5", listPo);
+			request.getRequestDispatcher("top5khachhang.jsp").forward(request, response);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

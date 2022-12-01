@@ -31,8 +31,6 @@ public class EditProfile extends HttpServlet {
 			String image = req.getParameter("images");
 			DAO dao = new DAO();
 			dao.UpdateUser(user, username, passsword, image, email);
-			System.out.print(username);
-			System.out.print(user.getuName());
 			session.setAttribute("acc", user);
 			req.setAttribute("mess", "Vui lòng đăng nhập lại");
 			req.getRequestDispatcher("Profile.jsp").forward(req, resp);

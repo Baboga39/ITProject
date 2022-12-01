@@ -12,7 +12,7 @@ public class Order {
 	private String note;
 	private int total;
 	public Order(int oId, int userId, String name, String country, String address, String zip, String phone,
-			String email, String note, int total) {
+			String email,  int total, String note) {
 		super();
 		this.oId = oId;
 		this.userId = userId;

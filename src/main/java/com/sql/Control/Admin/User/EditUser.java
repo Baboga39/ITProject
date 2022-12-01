@@ -19,7 +19,7 @@ public class EditUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		String id = request.getParameter("id");
-		String name = request.getParameter("name");
+			String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String image = request.getParameter("image");
 		String phone = request.getParameter("phone");
